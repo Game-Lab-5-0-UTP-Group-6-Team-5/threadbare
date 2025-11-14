@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://br747lnxdjj56"
+path="res://.godot/imported/nivel1.dialogue-4062c2f6d2a118a3fe7619c38caf6327.tres"
+
+[deps]
+
+source_file="res://scenes/quests/story_quests/marci/2_Sigilo/components/nivel1.dialogue"
+dest_files=["res://.godot/imported/nivel1.dialogue-4062c2f6d2a118a3fe7619c38caf6327.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bki0u0f64qd4m"
+path="res://.godot/imported/dialogoOutro.dialogue-ed8c9660e4618e3c6534c6c6cbdebe41.tres"
+
+[deps]
+
+source_file="res://scenes/quests/story_quests/marci/4_outro/dialogoOutro.dialogue"
+dest_files=["res://.godot/imported/dialogoOutro.dialogue-ed8c9660e4618e3c6534c6c6cbdebe41.tres"]
+
+[params]
+
+defaults=true

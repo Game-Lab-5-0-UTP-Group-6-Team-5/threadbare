@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bme3hwyxlawtw"]
+[gd_scene load_steps=34 format=4 uid="uid://bme3hwyxlawtw"]
 
 [ext_resource type="Script" uid="uid://bw2xmjm0ho4qe" path="res://scenes/quests/story_quests/marci/2_Sigilo/nextLevel.gd" id="1_333ce"]
 [ext_resource type="Texture2D" uid="uid://cxgiwbgef548u" path="res://scenes/quests/story_quests/marci/assets/sprites/tiles/sueloRocoso.png" id="1_ohlcr"]
@@ -8,9 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://iu2q66clupc6" path="res://scenes/game_elements/characters/player/player.tscn" id="4_32wnp"]
 [ext_resource type="PackedScene" uid="uid://b6upqefy7eghl" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/antorchaAnimada.tscn" id="4_bh5xg"]
 [ext_resource type="PackedScene" uid="uid://d37mebu7atru7" path="res://scenes/game_elements/characters/enemies/guard/guard.tscn" id="5_32wnp"]
-[ext_resource type="Texture2D" uid="uid://bw4ngxune8uv8" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/hueso.png" id="5_fgabg"]
-[ext_resource type="Texture2D" uid="uid://bqhgh77qk4iqx" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/Barril.png" id="5_nn1i0"]
-[ext_resource type="Texture2D" uid="uid://n5me6f0ecrpu" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/caja.png" id="7_uvo8q"]
+[ext_resource type="Texture2D" uid="uid://ct8560ljbh4ks" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/hueso.png" id="5_fgabg"]
+[ext_resource type="Texture2D" uid="uid://dmsix214m5ei1" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/Barril.png" id="5_nn1i0"]
+[ext_resource type="Texture2D" uid="uid://srox1kufiut3" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/caja.png" id="7_uvo8q"]
+[ext_resource type="SpriteFrames" uid="uid://l8snxyxqisao" path="res://scenes/quests/story_quests/marci/player_components/marci_player.tres" id="11_gi1m8"]
+[ext_resource type="Script" uid="uid://dnp0tjloec2d7" path="res://scenes/game_logic/stealth_game_logic.gd" id="12_caqbo"]
+[ext_resource type="SpriteFrames" uid="uid://bb8yfctnf5kmg" path="res://scenes/quests/story_quests/marci/assets/enemies/guard/guardia.tres" id="13_1h5tm"]
+[ext_resource type="Script" uid="uid://bmmk7kg2f5tbj" path="res://scenes/quests/story_quests/marci/assets/transition/transition.gd" id="13_gmrk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_caqbo"]
 size = Vector2(20, 47.58992)
@@ -126,7 +130,8 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_tqg62"]
 tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 19
+physics_layer_0/collision_mask = 528
 sources/0 = SubResource("TileSetAtlasSource_2mavm")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvo8q"]
@@ -178,9 +183,69 @@ sources/2 = SubResource("TileSetAtlasSource_w6j7n")
 
 [sub_resource type="Curve2D" id="Curve2D_32wnp"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1537, -103, 0, 0, 0, 0, 315, -80)
+"points": PackedVector2Array(0, 0, 0, 0, 1537, -103, 0, 0, 0, 0, 326, -103)
 }
 point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_caqbo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1549, 276, 7.0862446, -869.83655, -7.0862446, 869.83655, 1547, 1152)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_o1425"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tmgpi"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rsyyn"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rsyyn"]
+_data = {
+&"RESET": SubResource("Animation_o1425"),
+&"fade_in": SubResource("Animation_tmgpi"),
+&"fade_out": SubResource("Animation_rsyyn")
+}
 
 [node name="TileMap" type="Node2D"]
 
@@ -243,10 +308,15 @@ frame_progress = 0.0
 position = Vector2(1823, 1119)
 frame_progress = 0.0
 
-[node name="Player" parent="." instance=ExtResource("4_32wnp")]
-position = Vector2(223, 567)
+[node name="Player" parent="." groups=["filling_barrels"] instance=ExtResource("4_32wnp")]
+position = Vector2(222, 567)
+scale = Vector2(1.4, 1.4)
 walk_speed = 270.0
 run_speed = 400.0
+sprite_frames = ExtResource("11_gi1m8")
+
+[node name="PlayerSprite" parent="Player" index="2"]
+sprite_frames = ExtResource("11_gi1m8")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 process_mode = 3
@@ -260,13 +330,59 @@ editor_draw_limits = true
 [node name="Enemigo_Prueba" type="Node2D" parent="."]
 position = Vector2(80, -7)
 
+[node name="pathAbajo" type="Path2D" parent="Enemigo_Prueba"]
+top_level = true
+position = Vector2(636, 1370)
+curve = SubResource("Curve2D_32wnp")
+
 [node name="Guard" parent="Enemigo_Prueba" node_paths=PackedStringArray("patrol_path") instance=ExtResource("5_32wnp")]
 position = Vector2(2093, 226)
-patrol_path = NodePath("Path2D")
+disable_mode = 1
+collision_layer = 1
+sprite_frames = ExtResource("13_1h5tm")
+patrol_path = NodePath("../pathArriba")
 
-[node name="Path2D" type="Path2D" parent="Enemigo_Prueba/Guard"]
+[node name="Guard2" parent="Enemigo_Prueba" node_paths=PackedStringArray("patrol_path") instance=ExtResource("5_32wnp")]
+position = Vector2(2093, 1274)
+disable_mode = 1
+collision_layer = 1
+sprite_frames = ExtResource("13_1h5tm")
+patrol_path = NodePath("../pathAbajo")
+
+[node name="pathArriba" type="Path2D" parent="Enemigo_Prueba"]
 top_level = true
 position = Vector2(636, 322)
 curve = SubResource("Curve2D_32wnp")
 
+[node name="pathVertical" type="Path2D" parent="Enemigo_Prueba"]
+curve = SubResource("Curve2D_caqbo")
+
+[node name="Guard3" parent="Enemigo_Prueba" node_paths=PackedStringArray("patrol_path") instance=ExtResource("5_32wnp")]
+position = Vector2(1549, 276)
+collision_layer = 1
+sprite_frames = ExtResource("13_1h5tm")
+patrol_path = NodePath("../pathVertical")
+
+[node name="StealthGameLogic" type="Node" parent="."]
+script = ExtResource("12_caqbo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("13_gmrk8")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_rsyyn")
+}
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+
+[editable path="Player"]

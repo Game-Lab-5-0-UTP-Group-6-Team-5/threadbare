@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://chfo2r3sqx17e"]
 
-[ext_resource type="Texture2D" uid="uid://cjgnbyfaa2epu" path="res://scenes/quests/story_quests/marci/3_sequence_puzzle/marci_sign.png" id="1_pjabh"]
+[ext_resource type="Texture2D" uid="uid://cjgnbyfaa2epu" path="res://scenes/quests/story_quests/marci/4_sequence_puzzle/marci_sign.png" id="1_pjabh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbib7"]
 atlas = ExtResource("1_pjabh")
