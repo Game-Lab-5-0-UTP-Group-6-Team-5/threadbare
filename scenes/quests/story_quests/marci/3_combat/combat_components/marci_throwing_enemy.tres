@@ -1,9 +1,9 @@
 [gd_resource type="SpriteFrames" load_steps=25 format=3 uid="uid://dwymm03134iq5"]
 
-[ext_resource type="Texture2D" uid="uid://doyrf2hkyuc23" path="res://scenes/quests/story_quests/marci/2_combat/combat_components/marci_throwing_enemy_attack.png" id="1_nxos4"]
-[ext_resource type="Texture2D" uid="uid://ep7e00o8vql8" path="res://scenes/quests/story_quests/marci/2_combat/combat_components/marci_throwing_enemy_defeated.png" id="2_jxkqm"]
-[ext_resource type="Texture2D" uid="uid://b88nbrhlp7aqu" path="res://scenes/quests/story_quests/marci/2_combat/combat_components/marci_throwing_enemy_idle.png" id="3_m5uu3"]
-[ext_resource type="Texture2D" uid="uid://dqifawlwqyke8" path="res://scenes/quests/story_quests/marci/2_combat/combat_components/marci_throwing_enemy_walk.png" id="4_42oue"]
+[ext_resource type="Texture2D" uid="uid://doyrf2hkyuc23" path="res://scenes/quests/story_quests/marci/3_combat/combat_components/marci_throwing_enemy_attack.png" id="1_nxos4"]
+[ext_resource type="Texture2D" uid="uid://ep7e00o8vql8" path="res://scenes/quests/story_quests/marci/3_combat/combat_components/marci_throwing_enemy_defeated.png" id="2_jxkqm"]
+[ext_resource type="Texture2D" uid="uid://b88nbrhlp7aqu" path="res://scenes/quests/story_quests/marci/3_combat/combat_components/marci_throwing_enemy_idle.png" id="3_m5uu3"]
+[ext_resource type="Texture2D" uid="uid://dqifawlwqyke8" path="res://scenes/quests/story_quests/marci/3_combat/combat_components/marci_throwing_enemy_walk.png" id="4_42oue"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mind4"]
 atlas = ExtResource("1_nxos4")

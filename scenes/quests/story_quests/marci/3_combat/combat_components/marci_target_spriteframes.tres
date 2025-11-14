@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://celfymnjek4fg"]
 
-[ext_resource type="Texture2D" uid="uid://50o2ud5y2ypg" path="res://scenes/quests/story_quests/marci/2_combat/combat_components/marci_target.png" id="1_2du66"]
+[ext_resource type="Texture2D" uid="uid://50o2ud5y2ypg" path="res://scenes/quests/story_quests/marci/3_combat/combat_components/marci_target.png" id="1_2du66"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kf7lf"]
 atlas = ExtResource("1_2du66")

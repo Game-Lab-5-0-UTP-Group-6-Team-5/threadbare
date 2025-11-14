@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch5de820tngri"]
 
-[ext_resource type="Script" path="res://scenes/quests/story_quests/marci/0_intro/intro_components/intro_video.gd" id="1_s5wqt"]
-[ext_resource type="VideoStream" path="res://scenes/quests/story_quests/marci/0_intro/intro_components/IntroMarci.ogv" id="2_cvaw8"]
-[ext_resource type="Script" path="res://scenes/quests/story_quests/marci/0_intro/intro_components/cinematicaVideo.gd" id="3_aya8j"]
+[ext_resource type="Script" uid="uid://qipr05xglo8j" path="res://scenes/quests/story_quests/marci/0_intro/intro_components/intro_video.gd" id="1_s5wqt"]
+[ext_resource type="VideoStream" uid="uid://cxr4gisc5crjb" path="res://scenes/quests/story_quests/marci/0_intro/intro_components/IntroMarci.ogv" id="2_cvaw8"]
+[ext_resource type="Script" uid="uid://dxx1xjpkjq5oy" path="res://scenes/quests/story_quests/marci/0_intro/intro_components/cinematicaVideo.gd" id="3_aya8j"]
 
 [node name="IntroVideo" type="Control"]
 layout_mode = 3

@@ -1,8 +1,8 @@
-[gd_resource type="SpriteFrames" load_steps=23 format=3 uid="uid://l8snxyxqisao"]
+[gd_resource type="SpriteFrames" load_steps=25 format=3 uid="uid://l8snxyxqisao"]
 
 [ext_resource type="Texture2D" uid="uid://cn1jexx7y7jf0" path="res://scenes/quests/story_quests/marci/player_components/marci_player_attack_01.png" id="1_aab4k"]
 [ext_resource type="Texture2D" uid="uid://msr4ccxede3q" path="res://scenes/quests/story_quests/marci/player_components/marci_player_attack_02.png" id="2_d8pxg"]
-[ext_resource type="Texture2D" uid="uid://dppmwsp62ons" path="res://scenes/quests/story_quests/marci/player_components/marci_player_defeated.png" id="3_qcxx1"]
+[ext_resource type="Texture2D" uid="uid://dc5duvrr2euth" path="res://scenes/quests/story_quests/marci/player_components/defeat marci new.png" id="3_aab4k"]
 [ext_resource type="Texture2D" uid="uid://c403v7uj0ycaa" path="res://scenes/quests/story_quests/marci/player_components/marci_pler_idle.png" id="4_aab4k"]
 [ext_resource type="Texture2D" uid="uid://b5kfdn2fmt6a1" path="res://scenes/quests/story_quests/marci/player_components/walk_marci.png" id="5_aab4k"]
 
@@ -38,13 +38,21 @@ region = Rect2(384, 0, 192, 192)
 atlas = ExtResource("2_d8pxg")
 region = Rect2(576, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cu6lk"]
-atlas = ExtResource("3_qcxx1")
-region = Rect2(0, 0, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_aab4k"]
+atlas = ExtResource("3_aab4k")
+region = Rect2(0, 0, 112, 140)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_icahe"]
-atlas = ExtResource("3_qcxx1")
-region = Rect2(192, 0, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_iclqw"]
+atlas = ExtResource("3_aab4k")
+region = Rect2(112, 0, 112, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oy28t"]
+atlas = ExtResource("3_aab4k")
+region = Rect2(224, 0, 112, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1y1h"]
+atlas = ExtResource("3_aab4k")
+region = Rect2(336, 0, 112, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ms55"]
 atlas = ExtResource("4_aab4k")
@@ -112,37 +120,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cu6lk")
+"texture": SubResource("AtlasTexture_aab4k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_icahe")
+"texture": SubResource("AtlasTexture_iclqw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cu6lk")
+"texture": SubResource("AtlasTexture_oy28t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_icahe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cu6lk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_icahe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cu6lk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_icahe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cu6lk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_icahe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cu6lk")
+"texture": SubResource("AtlasTexture_u1y1h")
 }],
 "loop": true,
 "name": &"defeated",
