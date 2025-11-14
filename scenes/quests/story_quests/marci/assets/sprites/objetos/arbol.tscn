@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://b8xjayewv0p1c"]
 
-[ext_resource type="Shader" uid="uid://w7xx7ggdflo3" path="res://arbol.gdshader" id="1_8ed4s"]
+[ext_resource type="Shader" uid="uid://w7xx7ggdflo3" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/arbol.gdshader" id="1_8ed4s"]
 [ext_resource type="Texture2D" uid="uid://cqcha2ovmd5tj" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/Triangle Spruce Tree - GREEN - Spritesheet.png" id="2_6l06n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4pg3l"]
