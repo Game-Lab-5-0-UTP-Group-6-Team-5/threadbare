@@ -1,101 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://bpioif1foa7v7"]
+[gd_scene load_steps=5 format=4 uid="uid://bpioif1foa7v7"]
 
+[ext_resource type="Script" uid="uid://05i3b18j6avp" path="res://scenes/quests/story_quests/marci/4_outro/outro_marci.gd" id="1_pqh6y"]
 [ext_resource type="SpriteFrames" uid="uid://l8snxyxqisao" path="res://scenes/quests/story_quests/marci/player_components/marci_player.tres" id="2_xmo6e"]
 [ext_resource type="SpriteFrames" uid="uid://b11p65dnpxck8" path="res://scenes/quests/story_quests/shjourney/Otros_componentes/Personajes/niña.tres" id="3_knn2u"]
 [ext_resource type="TileSet" uid="uid://07fq3rspk8ia" path="res://scenes/tileset.tres" id="4_knn2u"]
-[ext_resource type="Script" uid="uid://x1mxt6bmei2o" path="res://scenes/ui_elements/cinematic/cinematic.gd" id="5_28ujn"]
-[ext_resource type="Resource" uid="uid://bki0u0f64qd4m" path="res://scenes/quests/story_quests/marci/4_outro/dialogoOutro.dialogue" id="5_yhcar"]
-
-[sub_resource type="Animation" id="Animation_knn2u"]
-resource_name = "walk_on"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OnTheGround/Marci:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-752.26, 171.705), Vector2(-14.24, 171.705)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("OnTheGround/Marci:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"walk", &"idle"]
-}
-
-[sub_resource type="Animation" id="Animation_yhcar"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OnTheGround/Marci:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-469, 82.00001)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("OnTheGround/Marci:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("OnTheGround/Mia:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(681.00006, 119)]
-}
-
-[sub_resource type="Animation" id="Animation_28ujn"]
-resource_name = "mia_walk"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OnTheGround/Mia:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(686.935, 208.425), Vector2(108.18, 208.425)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhcar"]
-_data = {
-&"RESET": SubResource("Animation_yhcar"),
-&"mia_walk": SubResource("Animation_28ujn"),
-&"walk_on": SubResource("Animation_knn2u")
-}
 
 [node name="outro_marci" type="Node2D"]
+script = ExtResource("1_pqh6y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -132,15 +43,3 @@ sprite_frames = ExtResource("3_knn2u")
 animation = &"idle"
 
 [node name="ScreenOverlay" type="CanvasLayer" parent="."]
-
-[node name="Cinematic" type="Node2D" parent="." node_paths=PackedStringArray("animation_player")]
-script = ExtResource("5_28ujn")
-dialogue = ExtResource("5_yhcar")
-animation_player = NodePath("../AnimationPlayer")
-next_scene = "uid://cufkthb25mpxy"
-metadata/_custom_type_script = "uid://x1mxt6bmei2o"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_yhcar")
-}
