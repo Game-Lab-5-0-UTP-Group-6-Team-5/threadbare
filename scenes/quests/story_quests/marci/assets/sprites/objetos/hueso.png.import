@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct8560ljbh4ks"
-path="res://.godot/imported/hueso.png-cc50e3460ab7dd781ac210cee7772c4e.ctex"
+path="res://.godot/imported/hueso.png-d8faa7279dc552dd6c70702ae6e664ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/quests/story_quests/marci/assets/hueso.png"
-dest_files=["res://.godot/imported/hueso.png-cc50e3460ab7dd781ac210cee7772c4e.ctex"]
+source_file="res://scenes/quests/story_quests/marci/assets/sprites/objetos/hueso.png"
+dest_files=["res://.godot/imported/hueso.png-d8faa7279dc552dd6c70702ae6e664ef.ctex"]
 
 [params]
 

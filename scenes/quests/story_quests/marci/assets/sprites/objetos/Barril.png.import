@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmsix214m5ei1"
-path="res://.godot/imported/Barril.png-a783ec44a0ec2ca802156a9a1d0a3d11.ctex"
+path="res://.godot/imported/Barril.png-e9a9867c7e9a4832a1f5a27b276c07c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/quests/story_quests/marci/assets/Barril.png"
-dest_files=["res://.godot/imported/Barril.png-a783ec44a0ec2ca802156a9a1d0a3d11.ctex"]
+source_file="res://scenes/quests/story_quests/marci/assets/sprites/objetos/Barril.png"
+dest_files=["res://.godot/imported/Barril.png-e9a9867c7e9a4832a1f5a27b276c07c1.ctex"]
 
 [params]
 
