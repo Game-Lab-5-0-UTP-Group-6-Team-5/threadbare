@@ -1,15 +1,18 @@
-[gd_scene load_steps=15 format=4 uid="uid://4k6bjlacs7fh"]
+[gd_scene load_steps=19 format=4 uid="uid://4k6bjlacs7fh"]
 
-[ext_resource type="PackedScene" uid="uid://b7dftq16nso76" path="res://scenes/quests/story_quests/marci/4_final_boss/components/fire_boss.tscn" id="1_gw2dt"]
-[ext_resource type="Script" uid="uid://b1jw5lkyq2gjt" path="res://scenes/quests/story_quests/marci/4_final_boss/nivel_3.gd" id="1_xeib6"]
+[ext_resource type="PackedScene" uid="uid://b7dftq16nso76" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/fire_boss.tscn" id="1_gw2dt"]
+[ext_resource type="Script" uid="uid://b1jw5lkyq2gjt" path="res://scenes/quests/story_quests/marci/4.2_final_boss/nivel_3.gd" id="1_xeib6"]
 [ext_resource type="Texture2D" uid="uid://88y0skibttx1" path="res://scenes/quests/story_quests/marci/assets/sprites/tiles/backgorund.png" id="2_agixt"]
-[ext_resource type="PackedScene" uid="uid://clo0tnpl0lldd" path="res://scenes/quests/story_quests/marci/4_final_boss/components/fireball.tscn" id="2_lg83y"]
-[ext_resource type="PackedScene" uid="uid://cwnwjm7id4dks" path="res://scenes/quests/story_quests/marci/4_final_boss/components/player.tscn" id="3_lg83y"]
-[ext_resource type="PackedScene" uid="uid://4ikddq8p1vub" path="res://scenes/quests/story_quests/marci/4_final_boss/components/bullet.tscn" id="5_bdhjr"]
+[ext_resource type="PackedScene" uid="uid://clo0tnpl0lldd" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/fireball.tscn" id="2_lg83y"]
+[ext_resource type="PackedScene" uid="uid://cwnwjm7id4dks" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/player.tscn" id="3_lg83y"]
+[ext_resource type="PackedScene" uid="uid://4ikddq8p1vub" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/bullet.tscn" id="5_bdhjr"]
 [ext_resource type="Texture2D" uid="uid://ce31if261j3he" path="res://scenes/quests/story_quests/marci/assets/sprites/tiles/barrier.png" id="5_nr06g"]
 [ext_resource type="Texture2D" uid="uid://di0r0uedtc2i7" path="res://scenes/quests/story_quests/marci/assets/sprites/tiles/cesped.png" id="6_shl43"]
 [ext_resource type="Texture2D" uid="uid://egdfbu10i7o6" path="res://scenes/quests/story_quests/marci/assets/sprites/tiles/cespedConTierra.png" id="7_agixt"]
+[ext_resource type="AudioStream" uid="uid://d1pnhm16u4lnp" path="res://scenes/quests/story_quests/marci/assets/audio/music/musica-boss.mp3" id="9_26jiw"]
 [ext_resource type="PackedScene" uid="uid://cfcgrfvtn04yp" path="res://scenes/ui_elements/hud/hud.tscn" id="10_nibut"]
+[ext_resource type="PackedScene" uid="uid://fuhl3l6gxq5k" path="res://scenes/game_elements/props/collectible_item/collectible_item.tscn" id="11_t0wm1"]
+[ext_resource type="Script" uid="uid://bgmwplmj3bfls" path="res://scenes/globals/game_state/inventory/inventory_item.gd" id="12_lqxh5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nr06g"]
 texture = ExtResource("6_shl43")
@@ -64,6 +67,10 @@ sources/0 = SubResource("TileSetAtlasSource_nr06g")
 sources/1 = SubResource("TileSetAtlasSource_nibut")
 sources/2 = SubResource("TileSetAtlasSource_8uunq")
 
+[sub_resource type="Resource" id="Resource_26jiw"]
+script = ExtResource("12_lqxh5")
+metadata/_custom_type_script = "uid://bgmwplmj3bfls"
+
 [node name="Nivel3" type="Node2D"]
 script = ExtResource("1_xeib6")
 
@@ -74,7 +81,7 @@ color = Color(0.85148567, 0.4859081, 0.3398759, 1)
 color = Color(0.5489626, 0.5489626, 0.54896253, 1)
 
 [node name="background" type="Sprite2D" parent="."]
-position = Vector2(641, 288)
+position = Vector2(641, 353)
 texture = ExtResource("2_agixt")
 
 [node name="suelo" type="TileMapLayer" parent="."]
@@ -82,7 +89,7 @@ tile_map_data = PackedByteArray("AAAAAAcAAQAAAAMAAAABAAcAAQACAAMAAAACAAYAAQADAAM
 tile_set = SubResource("TileSet_8uunq")
 
 [node name="FireBoss" parent="." instance=ExtResource("1_gw2dt")]
-position = Vector2(635, 231)
+position = Vector2(635, 200)
 player_path = NodePath("../Player")
 
 [node name="Fireball" parent="." instance=ExtResource("2_lg83y")]
@@ -94,16 +101,21 @@ collision_mask = 2
 position = Vector2(227, 615)
 mode = 0
 walk_speed = 300.0
-run_speed = 500.0
+run_speed = 400.0
 stopping_step = 1500.0
 moving_step = 4000.0
 shoot_delay = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.2, 1.2)
 limit_left = 0
 limit_top = -500
 limit_right = 1280
 limit_bottom = 832
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("9_26jiw")
+autoplay = true
 
 [node name="Bullet" parent="." instance=ExtResource("5_bdhjr")]
 position = Vector2(-43.000004, -24)
@@ -122,3 +134,8 @@ offset_right = 50.0
 offset_bottom = 43.0
 text = "hp : 5"
 metadata/_edit_use_anchors_ = true
+
+[node name="CollectibleItem" parent="." instance=ExtResource("11_t0wm1")]
+position = Vector2(633, 561)
+next_scene = "uid://bovmy0mrlpmlp"
+item = SubResource("Resource_26jiw")

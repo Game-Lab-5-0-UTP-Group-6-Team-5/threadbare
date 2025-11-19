@@ -37,7 +37,7 @@ func enemy_killed():
 	kills += 1
 	update_hud()
 
-	if score >= 50  and not is_final_item_spawned:
+	if score >= 70  and not is_final_item_spawned:
 		is_final_item_spawned = true
 		spawner.stop()
 		clear_enemies()

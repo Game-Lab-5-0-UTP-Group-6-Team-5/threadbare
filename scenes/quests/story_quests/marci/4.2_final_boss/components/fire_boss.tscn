@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://b7dftq16nso76"]
 
-[ext_resource type="Script" uid="uid://ddpwxs0rqvtv" path="res://scenes/quests/story_quests/marci/4_final_boss/components/FireBossFightLogic.gd" id="1_4ofp4"]
-[ext_resource type="PackedScene" uid="uid://clo0tnpl0lldd" path="res://scenes/quests/story_quests/marci/4_final_boss/components/fireball.tscn" id="2_6rpsa"]
+[ext_resource type="Script" uid="uid://ddpwxs0rqvtv" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/FireBossFightLogic.gd" id="1_4ofp4"]
+[ext_resource type="PackedScene" uid="uid://clo0tnpl0lldd" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/fireball.tscn" id="2_6rpsa"]
 [ext_resource type="Texture2D" uid="uid://1h7luv2b3rwl" path="res://scenes/world_map/components/cat.png" id="2_lu5yo"]
-[ext_resource type="Texture2D" uid="uid://phxnbhvax1t4" path="res://scenes/quests/story_quests/marci/4_final_boss/components/Grifo idle.png" id="4_5v3my"]
+[ext_resource type="Texture2D" uid="uid://phxnbhvax1t4" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/Grifo idle.png" id="4_5v3my"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lu5yo"]
 radius = 42.941822

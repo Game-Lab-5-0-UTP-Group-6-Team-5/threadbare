@@ -307,7 +307,7 @@ frame_progress = 0.0
 
 [node name="CollectibleItem" parent="Objetos" instance=ExtResource("14_s82xh")]
 position = Vector2(3295, 223)
-next_scene = "uid://bemc8cvitjcnb"
+next_scene = "uid://m7hahs7ucupi"
 item = SubResource("Resource_0t0rd")
 collected_dialogue = ExtResource("16_8m51y")
 dialogue_title = &"well_done"

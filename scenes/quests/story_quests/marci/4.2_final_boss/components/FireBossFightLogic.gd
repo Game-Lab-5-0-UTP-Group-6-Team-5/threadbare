@@ -8,7 +8,7 @@ class_name FireBoss
 @onready var player = get_node_or_null(player_path)
 @onready var shoot_timer: Timer = $ShootTimer
 
-var max_health := 100
+var max_health := 200
 var health := max_health
 var phase := 1
 
@@ -44,13 +44,13 @@ func _shoot():
 	var extra_random_count := 0
 	match phase:
 		1:
-			extra_random_count = 1 	# Total: 1 dirigido + 1 aleatorio = 2
+			extra_random_count = 3 
 		2:
-			extra_random_count = 3 	# Total: 1 dirigido + 3 aleatorios = 4
+			extra_random_count = 6 
 		3:
-			extra_random_count = 6 	# Total: 1 dirigido + 6 aleatorios = 7
+			extra_random_count = 12
 		4:
-			extra_random_count = 10 	# Total: 1 dirigido + 10 aleatorios = 11
+			extra_random_count = 18
 
 	var num_shots = 1 + extra_random_count
 	
@@ -85,10 +85,11 @@ func _shoot():
 func take_damage(amount):
 	health -= amount
 	if health <= 0:
-		print("💀 Boss muerto")
+		var main = get_tree().get_first_node_in_group("main")
+		if main and main.has_method("boss_defeated"):
+			main.boss_defeated()	
 		queue_free()
 		return
-
 	_update_phase()
 
 func _update_phase():
