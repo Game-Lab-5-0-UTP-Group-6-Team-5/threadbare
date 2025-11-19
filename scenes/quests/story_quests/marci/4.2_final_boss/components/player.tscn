@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cwnwjm7id4dks"]
 
-[ext_resource type="Script" uid="uid://b5q2iimka2hpl" path="res://scenes/quests/story_quests/marci/4_final_boss/components/player.gd" id="1_onpil"]
+[ext_resource type="Script" uid="uid://b5q2iimka2hpl" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/player.gd" id="1_onpil"]
 [ext_resource type="SpriteFrames" uid="uid://l8snxyxqisao" path="res://scenes/quests/story_quests/marci/player_components/marci_player.tres" id="2_a670a"]
 [ext_resource type="Script" uid="uid://bpu6jo4kvehlg" path="res://scenes/game_elements/characters/player/components/player_interaction.gd" id="3_a670a"]
 [ext_resource type="Script" uid="uid://necvar42rnih" path="res://scenes/game_elements/characters/player/components/interact_zone.gd" id="4_tsw05"]

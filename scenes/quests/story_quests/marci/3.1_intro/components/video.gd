@@ -10,13 +10,10 @@ extends Node2D
 
 func _ready() -> void:
 	if video_player and animation_player:
+
 		video_player.modulate.a = 1.0 
 		video_player.play()
-		
-		var duracion = video_player.get_stream_length()
-		var tiempo_fade = 1.5 
-		var tiempo_espera = duracion - tiempo_fade
-		await get_tree().create_timer(tiempo_espera).timeout
+		await video_player.finished
 		animation_player.play("fade_out")
 		await animation_player.animation_finished
 	

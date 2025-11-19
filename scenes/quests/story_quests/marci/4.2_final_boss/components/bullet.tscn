@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://4ikddq8p1vub"]
 
-[ext_resource type="Script" uid="uid://pjbq0i73ux7s" path="res://scenes/quests/story_quests/marci/4_final_boss/components/bullet.gd" id="1_q8lpl"]
+[ext_resource type="Script" uid="uid://pjbq0i73ux7s" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/bullet.gd" id="1_q8lpl"]
 [ext_resource type="Texture2D" uid="uid://dr872bypu4vlt" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/proyectil.png" id="2_yg518"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]

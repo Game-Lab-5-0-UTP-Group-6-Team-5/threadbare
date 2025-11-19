@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://07fq3rspk8ia" path="res://scenes/tileset.tres" id="1_8ujtd"]
 [ext_resource type="PackedScene" uid="uid://iu2q66clupc6" path="res://scenes/game_elements/characters/player/player.tscn" id="3_8ujtd"]
 [ext_resource type="AudioStream" uid="uid://dbwjolg3xlntq" path="res://scenes/quests/story_quests/shjourney/2_shjourney_intro/template_intro_components/EffectSounds/amazon-rainforest.mp3" id="5_j2cyr"]
-[ext_resource type="PackedScene" uid="uid://b7dftq16nso76" path="res://scenes/quests/story_quests/marci/2_Sigilo/personajes/fire_boss.tscn" id="6_8hpfh"]
+[ext_resource type="PackedScene" uid="uid://b7dftq16nso76" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/fire_boss.tscn" id="6_8hpfh"]
 
 [node name="prueba" type="Node2D"]
 scale = Vector2(1.3364611, 1.136642)

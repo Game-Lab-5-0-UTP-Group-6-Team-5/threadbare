@@ -145,17 +145,6 @@ tile_set = SubResource("TileSet_2fbxp")
 
 [node name="Bullet" parent="." instance=ExtResource("10_vxpqj")]
 
-[node name="Player" parent="." instance=ExtResource("15_gj0gg")]
-position = Vector2(802, 610)
-sprite_frames = ExtResource("8_rl3mt")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
-stream = ExtResource("7_s0gpv")
-volume_db = -5.0
-autoplay = true
-
 [node name="Arboles" type="Node2D" parent="."]
 position = Vector2(1688, -214)
 scale = Vector2(4, 4)
@@ -3255,10 +3244,22 @@ process_thread_group_order = 0
 process_thread_messages = 0
 position = Vector2(1704.5, 797.25)
 
+[node name="Player" parent="." instance=ExtResource("15_gj0gg")]
+position = Vector2(802, 610)
+run_speed = 400.0
+sprite_frames = ExtResource("8_rl3mt")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("7_s0gpv")
+volume_db = -5.0
+autoplay = true
+
 [node name="CollectibleItem" parent="." instance=ExtResource("17_dfeex")]
 position = Vector2(6559, 801)
 revealed = false
-next_scene = "uid://4k6bjlacs7fh"
+next_scene = "uid://nwhxigh6ba2r"
 item = SubResource("Resource_a41bq")
 
 [node name="EnemySpawner" type="Timer" parent="."]

@@ -11,7 +11,7 @@ Termino siendo atrapada y le dieron sentencia completo..
 Pero ella no piensa rendirse, ella saldrá de allí, no puede dejar a su hija.
 do animation_player.play(&"walk_on")
 do animation_player.animation_finished
-Marci:Mucho lo estoy pensando, debo salir de aquí cuanto antes.
+Marci: Mucho lo estoy pensando, debo salir de aquí cuanto antes.
 do animation_player.play(&"walk_off")
-Marci:Debo darme prisa antes que se den cuenta.
+Marci: Debo darme prisa antes que se den cuenta.
 => END

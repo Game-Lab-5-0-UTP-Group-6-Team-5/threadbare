@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://bovmy0mrlpmlp"]
+
+[ext_resource type="VideoStream" uid="uid://ctywh0a8n02gv" path="res://scenes/quests/story_quests/marci/4.3_Outro_Boss/components/End minijuego 3.ogv" id="1_bwc3g"]
+[ext_resource type="Script" uid="uid://cavedd2oh3jmj" path="res://scenes/quests/story_quests/marci/4.3_Outro_Boss/components/video.gd" id="1_d3apw"]
+
+[sub_resource type="Animation" id="Animation_0l5wy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VideoStreamPlayer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k1ke0"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VideoStreamPlayer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hg7c3"]
+_data = {
+&"RESET": SubResource("Animation_0l5wy"),
+&"fade_out": SubResource("Animation_k1ke0")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 1281.0
+offset_bottom = 719.0
+stream = ExtResource("1_bwc3g")
+expand = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hg7c3")
+}
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_d3apw")
+next_scene = "uid://c3vt5xufh0g28"
+animation_player = NodePath("../AnimationPlayer")
