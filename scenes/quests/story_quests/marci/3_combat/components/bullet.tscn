@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dywwv7t1yk5j1"]
 
-[ext_resource type="Script" uid="uid://dy1wcv0t1t4ds" path="res://scenes/quests/story_quests/marci/export_minigame/scripts/bullet.gd" id="1_kja82"]
+[ext_resource type="Script" uid="uid://bfhnwvf7e1p5e" path="res://scenes/quests/story_quests/marci/3_combat/components/bullet.gd" id="1_yg518"]
 [ext_resource type="Texture2D" uid="uid://dr872bypu4vlt" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/proyectil.png" id="2_yg518"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
@@ -38,7 +38,7 @@ animations = [{
 scale = Vector2(0.99834436, 1)
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_kja82")
+script = ExtResource("1_yg518")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y25gk")

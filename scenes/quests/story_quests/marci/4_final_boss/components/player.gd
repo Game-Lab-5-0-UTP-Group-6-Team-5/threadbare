@@ -134,7 +134,7 @@ func shoot():
 			min_dist = d
 			nearest = e
 	var dir = (nearest.global_position - global_position).normalized()
-	var b = preload("res://scenes/quests/story_quests/marci/4_final_boss/components/bullet.tscn").instantiate()
+	var b = preload("res://scenes/quests/story_quests/marci/3_combat/components/bullet.tscn").instantiate()
 	b.global_position = global_position
 	b.direction = dir
 	main.add_child(b)

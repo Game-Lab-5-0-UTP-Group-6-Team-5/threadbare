@@ -92,6 +92,12 @@ collision_mask = 2
 
 [node name="Player" parent="." instance=ExtResource("3_lg83y")]
 position = Vector2(227, 615)
+mode = 0
+walk_speed = 300.0
+run_speed = 500.0
+stopping_step = 1500.0
+moving_step = 4000.0
+shoot_delay = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0
