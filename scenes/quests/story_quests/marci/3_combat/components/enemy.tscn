@@ -1,0 +1,137 @@
+[gd_scene load_steps=20 format=3 uid="uid://cs8jdqahf1uld"]
+
+[ext_resource type="Script" uid="uid://vesi3sckita0" path="res://scenes/quests/story_quests/marci/export_minigame/scripts/enemy.gd" id="1_ubho0"]
+[ext_resource type="Texture2D" uid="uid://c1542ma3ic1dc" path="res://scenes/quests/story_quests/marci/assets/enemies/wolf/lobos_attack.png" id="2_nlmqq"]
+[ext_resource type="Texture2D" uid="uid://baa0gh2hb6gks" path="res://scenes/quests/story_quests/marci/assets/enemies/wolf/Lobo defeat.png" id="3_1dj8h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
+size = Vector2(110, 149)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+radius = 47.095646
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4meo"]
+atlas = ExtResource("2_nlmqq")
+region = Rect2(0, 0, 155, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecpll"]
+atlas = ExtResource("2_nlmqq")
+region = Rect2(155, 0, 155, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1hxw"]
+atlas = ExtResource("2_nlmqq")
+region = Rect2(310, 0, 155, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7hhg"]
+atlas = ExtResource("2_nlmqq")
+region = Rect2(465, 0, 155, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja0b4"]
+atlas = ExtResource("2_nlmqq")
+region = Rect2(620, 0, 155, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kck66"]
+atlas = ExtResource("3_1dj8h")
+region = Rect2(0, 0, 148, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw7an"]
+atlas = ExtResource("3_1dj8h")
+region = Rect2(148, 0, 148, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_febcv"]
+atlas = ExtResource("3_1dj8h")
+region = Rect2(296, 0, 148, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv41h"]
+atlas = ExtResource("3_1dj8h")
+region = Rect2(444, 0, 148, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rftr"]
+atlas = ExtResource("3_1dj8h")
+region = Rect2(592, 0, 148, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v8r5"]
+atlas = ExtResource("3_1dj8h")
+region = Rect2(740, 0, 148, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5vdj"]
+atlas = ExtResource("3_1dj8h")
+region = Rect2(888, 0, 148, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y36n4"]
+atlas = ExtResource("3_1dj8h")
+region = Rect2(1036, 0, 148, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7aon"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4meo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecpll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1hxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7hhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja0b4")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kck66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw7an")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_febcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv41h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rftr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v8r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5vdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y36n4")
+}],
+"loop": false,
+"name": &"defeat",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_ubho0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 3)
+scale = Vector2(0.6, 0.65891474)
+shape = SubResource("RectangleShape2D_5uy6h")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_md0e3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_o7aon")
+animation = &"attack"
+
+[connection signal="body_entered" from="DamageArea" to="." method="e"]

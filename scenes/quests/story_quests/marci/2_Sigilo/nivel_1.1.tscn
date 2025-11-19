@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bme3hwyxlawtw"]
+[gd_scene load_steps=36 format=4 uid="uid://bme3hwyxlawtw"]
 
 [ext_resource type="Script" uid="uid://bw2xmjm0ho4qe" path="res://scenes/quests/story_quests/marci/2_Sigilo/nextLevel.gd" id="1_333ce"]
 [ext_resource type="Texture2D" uid="uid://cxgiwbgef548u" path="res://scenes/quests/story_quests/marci/assets/sprites/tiles/sueloRocoso.png" id="1_ohlcr"]
@@ -193,6 +193,18 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve2D" id="Curve2D_1h5tm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, 3, 0, 0, 0, 0, -2, 789)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_m5xks"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 741, 1122, 0, 0, 0, 0, 741, 343)
+}
+point_count = 2
+
 [sub_resource type="Animation" id="Animation_o1425"]
 length = 0.001
 tracks/0/type = "value"
@@ -308,25 +320,6 @@ frame_progress = 0.0
 position = Vector2(1823, 1119)
 frame_progress = 0.0
 
-[node name="Player" parent="." groups=["filling_barrels"] instance=ExtResource("4_32wnp")]
-position = Vector2(222, 567)
-scale = Vector2(1.4, 1.4)
-walk_speed = 270.0
-run_speed = 400.0
-sprite_frames = ExtResource("11_gi1m8")
-
-[node name="PlayerSprite" parent="Player" index="2"]
-sprite_frames = ExtResource("11_gi1m8")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-process_mode = 3
-zoom = Vector2(1.5, 1.5)
-limit_left = 0
-limit_top = 0
-limit_right = 2943
-position_smoothing_enabled = true
-editor_draw_limits = true
-
 [node name="Enemigo_Prueba" type="Node2D" parent="."]
 position = Vector2(80, -7)
 
@@ -363,6 +356,25 @@ collision_layer = 1
 sprite_frames = ExtResource("13_1h5tm")
 patrol_path = NodePath("../pathVertical")
 
+[node name="Guard4" parent="Enemigo_Prueba" node_paths=PackedStringArray("patrol_path") instance=ExtResource("5_32wnp")]
+position = Vector2(2319, 361)
+collision_layer = 1
+sprite_frames = ExtResource("13_1h5tm")
+patrol_path = NodePath("../path4")
+
+[node name="path4" type="Path2D" parent="Enemigo_Prueba"]
+position = Vector2(2320, 358)
+curve = SubResource("Curve2D_1h5tm")
+
+[node name="Guard5" parent="Enemigo_Prueba" node_paths=PackedStringArray("patrol_path") instance=ExtResource("5_32wnp")]
+position = Vector2(741, 1122)
+collision_layer = 1
+sprite_frames = ExtResource("13_1h5tm")
+patrol_path = NodePath("../path5")
+
+[node name="path5" type="Path2D" parent="Enemigo_Prueba"]
+curve = SubResource("Curve2D_m5xks")
+
 [node name="StealthGameLogic" type="Node" parent="."]
 script = ExtResource("12_caqbo")
 
@@ -383,6 +395,23 @@ libraries = {
 &"": SubResource("AnimationLibrary_rsyyn")
 }
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[node name="Player" parent="." instance=ExtResource("4_32wnp")]
+position = Vector2(231, 547)
+scale = Vector2(1.4, 1.4)
+walk_speed = 280.0
+run_speed = 320.0
+sprite_frames = ExtResource("11_gi1m8")
 
-[editable path="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+process_mode = 3
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 2944
+limit_bottom = 1792
+position_smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="ScreenOverlay" type="CanvasLayer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

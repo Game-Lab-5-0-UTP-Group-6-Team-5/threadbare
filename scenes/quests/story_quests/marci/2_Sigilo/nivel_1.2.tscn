@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://gt756ekfckfn"]
+[gd_scene load_steps=42 format=4 uid="uid://gt756ekfckfn"]
 
 [ext_resource type="Texture2D" uid="uid://dtmsv5lqluadq" path="res://scenes/quests/story_quests/marci/assets/sprites/tiles/sueloAgrietado.png" id="1_8ggh4"]
 [ext_resource type="Script" uid="uid://cmfsxgk57k6he" path="res://scenes/quests/story_quests/marci/2_Sigilo/nivel_1.2.gd" id="1_836cv"]
@@ -158,6 +158,10 @@ sources/0 = SubResource("TileSetAtlasSource_bacaw")
 sources/1 = SubResource("TileSetAtlasSource_ftb1q")
 sources/2 = SubResource("TileSetAtlasSource_avdbo")
 
+[sub_resource type="Resource" id="Resource_0t0rd"]
+script = ExtResource("15_0t0rd")
+metadata/_custom_type_script = "uid://bgmwplmj3bfls"
+
 [sub_resource type="Curve2D" id="Curve2D_wwglu"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 446, -2)
@@ -166,19 +170,43 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_s6xsm"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 613.00006, -170, 0, 0, 0, 0, 444.00006, 5)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 433.00006, 0)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_836cv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1128, 50, 0, 0, 0, 0, 21, -41, 0, 0, 0, 0, 31, -5, 0, 0, 0, 0, 24, 24, 0, 0, 0, 0, 1095, 16)
+"points": PackedVector2Array(0, 0, 0, 0, 1126, 41, 0, 0, 0, 0, -166, 40)
 }
-point_count = 5
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_s82xh"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1203, -47)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1119, -3)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_d7oss"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1504, 1605, 0, 0, 0, 0, 1501, 332)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_md02o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2913, 1630, 0, 0, 0, 0, 2913, 328)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_rb27g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2844, 1260, 0, 0, 0, 0, 2306, 1259)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_us8ll"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2859, 748, 0, 0, 0, 0, 2306, 748)
 }
 point_count = 2
 
@@ -236,10 +264,6 @@ _data = {
 &"fade_out": SubResource("Animation_rsyyn")
 }
 
-[sub_resource type="Resource" id="Resource_0t0rd"]
-script = ExtResource("15_0t0rd")
-metadata/_custom_type_script = "uid://bgmwplmj3bfls"
-
 [node name="Nivel1" type="Node2D"]
 script = ExtResource("1_836cv")
 
@@ -281,9 +305,18 @@ frame_progress = 0.39207244
 position = Vector2(1823, 1119)
 frame_progress = 0.0
 
+[node name="CollectibleItem" parent="Objetos" instance=ExtResource("14_s82xh")]
+position = Vector2(3295, 223)
+next_scene = "uid://bemc8cvitjcnb"
+item = SubResource("Resource_0t0rd")
+collected_dialogue = ExtResource("16_8m51y")
+dialogue_title = &"well_done"
+
 [node name="Player" parent="." instance=ExtResource("4_rexup")]
 position = Vector2(231, 677)
 scale = Vector2(1.4, 1.4)
+walk_speed = 280.0
+run_speed = 320.0
 sprite_frames = ExtResource("10_3waql")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -322,7 +355,7 @@ sprite_frames = ExtResource("13_d7oss")
 patrol_path = NodePath("../Guard4-PatrolPath")
 
 [node name="Guard3" parent="EnemyGuards" node_paths=PackedStringArray("patrol_path") instance=ExtResource("11_wwglu")]
-position = Vector2(2909, 247)
+position = Vector2(2907, 238)
 disable_mode = 2
 sprite_frames = ExtResource("13_d7oss")
 patrol_path = NodePath("../Guard3-PatrolPath")
@@ -349,6 +382,42 @@ curve = SubResource("Curve2D_836cv")
 position = Vector2(1699, 1788)
 curve = SubResource("Curve2D_s82xh")
 
+[node name="Guard5" parent="EnemyGuards" node_paths=PackedStringArray("patrol_path") instance=ExtResource("11_wwglu")]
+position = Vector2(1504, 1605)
+disable_mode = 2
+sprite_frames = ExtResource("13_d7oss")
+patrol_path = NodePath("../Guard5-PatrolPath")
+
+[node name="Guard5-PatrolPath" type="Path2D" parent="EnemyGuards"]
+curve = SubResource("Curve2D_d7oss")
+
+[node name="Guard6" parent="EnemyGuards" node_paths=PackedStringArray("patrol_path") instance=ExtResource("11_wwglu")]
+position = Vector2(2913, 1630)
+disable_mode = 2
+sprite_frames = ExtResource("13_d7oss")
+patrol_path = NodePath("../Guard6-PatrolPath")
+
+[node name="Guard6-PatrolPath" type="Path2D" parent="EnemyGuards"]
+curve = SubResource("Curve2D_md02o")
+
+[node name="Guard7" parent="EnemyGuards" node_paths=PackedStringArray("patrol_path") instance=ExtResource("11_wwglu")]
+position = Vector2(2844, 1260)
+disable_mode = 2
+sprite_frames = ExtResource("13_d7oss")
+patrol_path = NodePath("../Guard7-PatrolPath")
+
+[node name="Guard7-PatrolPath" type="Path2D" parent="EnemyGuards"]
+curve = SubResource("Curve2D_rb27g")
+
+[node name="Guard8" parent="EnemyGuards" node_paths=PackedStringArray("patrol_path") instance=ExtResource("11_wwglu")]
+position = Vector2(2859, 748)
+disable_mode = 2
+sprite_frames = ExtResource("13_d7oss")
+patrol_path = NodePath("../Guard8-PatrolPath")
+
+[node name="Guard8-PatrolPath" type="Path2D" parent="EnemyGuards"]
+curve = SubResource("Curve2D_us8ll")
+
 [node name="StealthGameLogic" type="Node" parent="."]
 script = ExtResource("10_lwg7h")
 
@@ -369,11 +438,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_rsyyn")
 }
 
-[node name="CollectibleItem" parent="." instance=ExtResource("14_s82xh")]
-position = Vector2(3295, 223)
-next_scene = "uid://bemc8cvitjcnb"
-item = SubResource("Resource_0t0rd")
-collected_dialogue = ExtResource("16_8m51y")
-dialogue_title = &"well_done"
-
 [node name="HUD" parent="." instance=ExtResource("17_jr2u1")]
+
+[node name="ScreenOverlay" type="CanvasLayer" parent="."]
