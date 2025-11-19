@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwnwjm7id4dks"]
+
+[ext_resource type="Script" uid="uid://b5q2iimka2hpl" path="res://scenes/quests/story_quests/marci/4_final_boss/components/player.gd" id="1_onpil"]
+[ext_resource type="SpriteFrames" uid="uid://l8snxyxqisao" path="res://scenes/quests/story_quests/marci/player_components/marci_player.tres" id="2_a670a"]
+[ext_resource type="Script" uid="uid://bpu6jo4kvehlg" path="res://scenes/game_elements/characters/player/components/player_interaction.gd" id="3_a670a"]
+[ext_resource type="Script" uid="uid://necvar42rnih" path="res://scenes/game_elements/characters/player/components/interact_zone.gd" id="4_tsw05"]
+[ext_resource type="PackedScene" uid="uid://yfpfno276rol" path="res://scenes/game_elements/props/fixed_size_label/fixed_size_label.tscn" id="5_hycw8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_je7p5"]
+size = Vector2(32, 47)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
+height = 42.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a670a"]
+size = Vector2(110, 80)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 531
+motion_mode = 1
+wall_min_slide_angle = 0.017453292
+script = ExtResource("1_onpil")
+mode = null
+walk_speed = null
+run_speed = null
+stopping_step = null
+moving_step = null
+sprite_frames = ExtResource("2_a670a")
+shoot_delay = null
+
+[node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 64
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -28.5)
+shape = SubResource("RectangleShape2D_je7p5")
+debug_color = Color(0.94902, 0.231373, 0, 0.419608)
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-7.9999995, -21)
+scale = Vector2(1.4, 1.4)
+sprite_frames = ExtResource("2_a670a")
+animation = &"attack_01"
+autoplay = "idle"
+frame_progress = 0.76640224
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_3vyb7")
+
+[node name="PlayerInteraction" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_a670a")
+
+[node name="InteractZone" type="Area2D" parent="PlayerInteraction"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("4_tsw05")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteraction/InteractZone"]
+position = Vector2(47, -30)
+shape = SubResource("RectangleShape2D_a670a")
+debug_color = Color(0.600391, 0.54335, 0, 0.42)
+
+[node name="InteractMarker" type="Marker2D" parent="PlayerInteraction"]
+unique_name_in_owner = true
+position = Vector2(-1, -116)
+
+[node name="InteractLabel" parent="PlayerInteraction/InteractMarker" instance=ExtResource("5_hycw8")]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 11.0
+offset_right = 1.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7dftq16nso76"]
+
+[ext_resource type="Script" uid="uid://ddpwxs0rqvtv" path="res://scenes/quests/story_quests/marci/4_final_boss/components/FireBossFightLogic.gd" id="1_4ofp4"]
+[ext_resource type="PackedScene" uid="uid://clo0tnpl0lldd" path="res://scenes/quests/story_quests/marci/4_final_boss/components/fireball.tscn" id="2_6rpsa"]
+[ext_resource type="Texture2D" uid="uid://1h7luv2b3rwl" path="res://scenes/world_map/components/cat.png" id="2_lu5yo"]
+[ext_resource type="Texture2D" uid="uid://phxnbhvax1t4" path="res://scenes/quests/story_quests/marci/4_final_boss/components/Grifo idle.png" id="4_5v3my"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lu5yo"]
+radius = 42.941822
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pu0f"]
+atlas = ExtResource("4_5v3my")
+region = Rect2(0, 0, 229, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lry4"]
+atlas = ExtResource("4_5v3my")
+region = Rect2(229, 0, 229, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nue8l"]
+atlas = ExtResource("4_5v3my")
+region = Rect2(458, 0, 229, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rra0y"]
+atlas = ExtResource("4_5v3my")
+region = Rect2(687, 0, 229, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cokei"]
+atlas = ExtResource("4_5v3my")
+region = Rect2(916, 0, 229, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jahh"]
+atlas = ExtResource("4_5v3my")
+region = Rect2(1145, 0, 229, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqa5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pu0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lry4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nue8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rra0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cokei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jahh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FireBoss" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_4ofp4")
+fireball_scene = ExtResource("2_6rpsa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lu5yo")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_lu5yo")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-34, -34)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_nqa5g")
+autoplay = "default"

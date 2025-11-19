@@ -1,7 +1,15 @@
 # SPDX-FileCopyrightText: The Threadbare Authors
 # SPDX-License-Identifier: MPL-2.0
 ~ start
-You've made it to the closing scene!
-This is where you will tie up the loose ends of your story.
-Let's go back to Fray's End so you can return these threads to the Eternal Loom...
+do animation_player.play(&"marci_walk")
+do animation_player.animation_finished
+Marci: Ahí está… luego de tanto tiempo.,
+Marci: Al fin podré volver a verla.,
+Marci: ¡Miaaaa!
+do animation_player.play(&"mia_walk")
+Mia: ¿Mamá…?
+Marci: ¡Miaaaa!
+Marci: Ya no te volveré a dejar sola. Te extrañé tanto.
+Mia: *Sollozo* Sí…
+Mia: Yo tambien.
 => END

@@ -205,7 +205,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ed4s"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ed4s"]
+size = Vector2(33.550293, 67.77764)
 
 [node name="arbol" type="Node2D"]
 
@@ -216,8 +217,10 @@ autoplay = "default"
 frame_progress = 0.34867483
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 83
+collision_mask = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1, 31)
+position = Vector2(-2.3841858e-07, 21.5)
 scale = Vector2(1.013404, 0.4868862)
-shape = SubResource("CapsuleShape2D_8ed4s")
+shape = SubResource("RectangleShape2D_8ed4s")

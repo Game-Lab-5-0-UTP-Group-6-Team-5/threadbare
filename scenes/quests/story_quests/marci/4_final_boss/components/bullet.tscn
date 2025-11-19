@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://4ikddq8p1vub"]
+
+[ext_resource type="Script" uid="uid://dy1wcv0t1t4ds" path="res://scenes/quests/story_quests/marci/export_minigame/scripts/bullet.gd" id="1_kja82"]
+[ext_resource type="Texture2D" uid="uid://dr872bypu4vlt" path="res://scenes/quests/story_quests/marci/assets/sprites/objetos/proyectil.png" id="2_yg518"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4g6y"]
+atlas = ExtResource("2_yg518")
+region = Rect2(0, 0, 131, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfxfc"]
+atlas = ExtResource("2_yg518")
+region = Rect2(131, 0, 131, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1mpr"]
+atlas = ExtResource("2_yg518")
+region = Rect2(262, 0, 131, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ua3fv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4g6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfxfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1mpr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(0.99834436, 1)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_kja82")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y25gk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.0082917, 36)
+sprite_frames = SubResource("SpriteFrames_ua3fv")
+frame_progress = 0.826912
