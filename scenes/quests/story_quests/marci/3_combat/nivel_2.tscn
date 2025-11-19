@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://di0r0uedtc2i7" path="res://scenes/quests/story_quests/marci/assets/sprites/tiles/cesped.png" id="3_2fbxp"]
 [ext_resource type="Texture2D" uid="uid://dav8xp07y7op6" path="res://scenes/quests/story_quests/marci/assets/sprites/tiles/agua.png" id="4_r5ha0"]
 [ext_resource type="Texture2D" uid="uid://bus13p2iswtwe" path="res://scenes/quests/story_quests/marci/assets/sprites/tiles/puente.png" id="5_eoqxs"]
-[ext_resource type="SpriteFrames" uid="uid://l8snxyxqisao" path="res://scenes/quests/story_quests/marci/player_components/marci_player.tres" id="7_re5h5"]
 [ext_resource type="AudioStream" uid="uid://cnnojr8wrepid" path="res://scenes/quests/story_quests/marci/assets/audio/music/ost_segundo_juego.mp3" id="7_s0gpv"]
+[ext_resource type="SpriteFrames" uid="uid://l8snxyxqisao" path="res://scenes/quests/story_quests/marci/player_components/marci_player.tres" id="8_rl3mt"]
 [ext_resource type="PackedScene" uid="uid://dywwv7t1yk5j1" path="res://scenes/quests/story_quests/marci/3_combat/components/bullet.tscn" id="10_vxpqj"]
 [ext_resource type="PackedScene" uid="uid://d4febf58dx33l" path="res://scenes/quests/story_quests/marci/3_combat/components/powerup.tscn" id="11_4alfw"]
 [ext_resource type="Shader" uid="uid://gupemrk5svml" path="res://scenes/quests/story_quests/marci/3_combat/components/main.gdshader" id="12_gpgg2"]
@@ -143,9 +143,11 @@ tile_set = SubResource("TileSet_wmkkv")
 tile_map_data = PackedByteArray("AAA5ACYAAQAAAAAAAAA6ACYAAQAAAAAAAAA7ACYAAQAAAAAAAAA8ACYAAQAAAAAAAAA8ACUAAQAAAAAAAAA7ACUAAQAAAAAAAAA6ACUAAQAAAAAAAAA5ACUAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_2fbxp")
 
+[node name="Bullet" parent="." instance=ExtResource("10_vxpqj")]
+
 [node name="Player" parent="." instance=ExtResource("15_gj0gg")]
 position = Vector2(802, 610)
-sprite_frames = ExtResource("7_re5h5")
+sprite_frames = ExtResource("8_rl3mt")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -3256,7 +3258,7 @@ position = Vector2(1704.5, 797.25)
 [node name="CollectibleItem" parent="." instance=ExtResource("17_dfeex")]
 position = Vector2(6559, 801)
 revealed = false
-next_scene = "uid://bpioif1foa7v7"
+next_scene = "uid://4k6bjlacs7fh"
 item = SubResource("Resource_a41bq")
 
 [node name="EnemySpawner" type="Timer" parent="."]
@@ -3276,9 +3278,6 @@ offset_top = 20.0
 offset_right = 50.0
 offset_bottom = 43.0
 text = "hp : 5"
-
-[node name="Bullet" parent="." instance=ExtResource("10_vxpqj")]
-position = Vector2(-95, 75)
 
 [node name="Powerup" parent="." instance=ExtResource("11_4alfw")]
 position = Vector2(-84, 143)
@@ -3331,5 +3330,4 @@ position = Vector2(3788, 610)
 [node name="spawn_point_9" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(3896, 1512)
 
-[connection signal="body_entered" from="Bullet" to="Bullet" method="_on_body_entered"]
 [connection signal="body_entered" from="Powerup" to="Powerup" method="_on_body_entered"]
