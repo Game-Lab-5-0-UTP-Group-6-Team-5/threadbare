@@ -1,10 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://clo0tnpl0lldd"]
+[gd_scene load_steps=8 format=3 uid="uid://clo0tnpl0lldd"]
 
 [ext_resource type="Script" uid="uid://cfxf6gunj2col" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/fireball.gd" id="1_42n44"]
-[ext_resource type="Texture2D" uid="uid://bdhfcs6igu6di" path="res://assets/third_party/tiny-swords/Deco/14.png" id="2_devog"]
+[ext_resource type="Texture2D" uid="uid://byxj37bhw5wcs" path="res://scenes/quests/story_quests/marci/4.2_final_boss/components/proyectil_grifo.png" id="2_44jvu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_devog"]
-radius = 3.4093316
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44jvu"]
+radius = 4.2616644
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28dan"]
+atlas = ExtResource("2_44jvu")
+region = Rect2(0, 0, 131, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j852w"]
+atlas = ExtResource("2_44jvu")
+region = Rect2(131, 0, 131, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbwgo"]
+atlas = ExtResource("2_44jvu")
+region = Rect2(262, 0, 131, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fb4px"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28dan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j852w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbwgo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Fireball" type="Area2D" groups=["projectiles"]]
 collision_layer = 20
@@ -13,15 +42,15 @@ script = ExtResource("1_42n44")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3.5197513, 1.111345)
-shape = SubResource("CircleShape2D_devog")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.36787283, 0.013959649, 0.042622827, 1)
-self_modulate = Color(0.849371, 0.76548886, 0.13506523, 1)
-z_index = 10
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_devog")
+shape = SubResource("CapsuleShape2D_44jvu")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(7, 55.000004)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_fb4px")
+autoplay = "default"
+frame_progress = 0.57810605
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
