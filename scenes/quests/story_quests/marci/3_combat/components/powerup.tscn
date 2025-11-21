@@ -11,7 +11,7 @@ light_mask = 8
 script = ExtResource("1_qfrhj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.058704454, 0.06092437)
+position = Vector2(-4, 0)
 texture = ExtResource("2_uyohv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

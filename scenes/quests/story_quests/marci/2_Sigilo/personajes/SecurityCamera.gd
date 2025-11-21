@@ -2,34 +2,36 @@
 class_name SecurityCamera
 extends Node2D
 
-## --- Señales ---
+
 signal player_detected(player: Node2D)
 
-## --- Estados de la cámara ---
+
 enum CameraState { IDLE, SUSPICIOUS, ALERT }
 
-## --- Apariencia ---
+
 @export var normal_color: Color = Color(0.0, 1.0, 0.5)
 @export var suspicious_color: Color = Color(1.0, 1.0, 0.0)
 @export var alert_color: Color = Color(1.0, 0.0, 0.0)
 
-## --- Rotación ---
+
 @export_range(10, 120, 5) var rotation_speed: float = 30.0
-@export_range(30, 180, 5) var max_rotation_angle: float = 90.0
 @export_range(0, 3, 0.1) var pause_time: float = 1.0
 
-## --- Detección ---
+
+@export_range(-360, 360, 5) var limit_start_angle: float = 180.0 
+@export_range(-360, 360, 5) var limit_end_angle: float = 360.0
+
+
 @export_range(20, 120, 5) var vision_cone_angle: float = 45.0
 @export_range(100, 1000, 50) var detection_range: float = 400.0
 @export_range(0.5, 5, 0.1) var time_to_detect: float = 2.0
 @export var see_through_walls: bool = false
-@export var guard_alert_range: float = 500.0   # 🔔 rango para alertar guardias
+@export var guard_alert_range: float = 500.0 
 
-## --- Sonidos ---
 @export var alert_sound: AudioStream
 @export var suspicious_sound: AudioStream
 
-## --- Variables internas ---
+
 var state: CameraState = CameraState.IDLE
 var current_rotation_direction: int = 1
 var initial_rotation: float = 0.0
@@ -37,16 +39,17 @@ var pause_timer: float = 0.0
 var detection_progress: float = 0.0
 var player_in_range: Node2D = null
 
-## --- Nodos ---
-@onready var vision_area: Area2D = $VisionArea
-@onready var light: PointLight2D = $Light
-@onready var detection_ray: RayCast2D = $DetectionRay
+@onready var rotating_part: Node2D = $RotatingPart
+@onready var vision_area: Area2D = $RotatingPart/VisionArea
+@onready var light: PointLight2D = $RotatingPart/Light
+@onready var detection_ray: RayCast2D = $RotatingPart/DetectionRay
 @onready var alert_audio: AudioStreamPlayer2D = $AlertAudio
 @onready var suspicious_audio: AudioStreamPlayer2D = $SuspiciousAudio
 
 
 func _ready() -> void:
-	initial_rotation = rotation_degrees
+	if rotating_part:
+		rotating_part.rotation_degrees = limit_start_angle
 	
 	if not Engine.is_editor_hint():
 		if vision_area:
@@ -68,22 +71,29 @@ func _process(delta: float) -> void:
 	_update_visuals()
 
 
-## --- ROTACIÓN AUTOMÁTICA ---
+
 func _update_rotation(delta: float) -> void:
 	if state == CameraState.ALERT:
-		return  # 🔴 no rota mientras está en alerta
+		return 
 	
 	if pause_timer > 0:
 		pause_timer -= delta
 		return
 	
-	rotation_degrees += rotation_speed * delta * current_rotation_direction
-	
-	var angle_from_initial = rotation_degrees - initial_rotation
-	if abs(angle_from_initial) >= max_rotation_angle:
-		rotation_degrees = initial_rotation + (max_rotation_angle * current_rotation_direction)
-		current_rotation_direction *= -1
-		pause_timer = pause_time
+	if rotating_part:
+
+		rotating_part.rotation_degrees += rotation_speed * delta * current_rotation_direction
+
+		if rotating_part.rotation_degrees >= limit_end_angle:
+			rotating_part.rotation_degrees = limit_end_angle
+			current_rotation_direction = -1
+			pause_timer = pause_time
+			
+
+		elif rotating_part.rotation_degrees <= limit_start_angle:
+			rotating_part.rotation_degrees = limit_start_angle
+			current_rotation_direction = 1
+			pause_timer = pause_time
 
 
 ## --- DETECCIÓN DEL JUGADOR ---
@@ -109,26 +119,29 @@ func _update_detection(delta: float) -> void:
 			state = CameraState.IDLE
 
 
-## --- VISIÓN ---
+
 func _is_player_in_vision() -> bool:
 	if not player_in_range:
 		return false
 	
 	var player_pos = player_in_range.global_position
-	var to_player = (player_pos - global_position)
+	var origin_pos = rotating_part.global_position if rotating_part else global_position
+	var to_player = (player_pos - origin_pos)
 	var distance = to_player.length()
 	
 	if distance > detection_range:
 		return false
 	
-	var angle_to_player = rad_to_deg(to_player.angle() - global_rotation)
+
+	var current_rot = rotating_part.global_rotation if rotating_part else global_rotation
+	var angle_to_player = rad_to_deg(to_player.angle() - current_rot)
 	angle_to_player = wrapf(angle_to_player, -180, 180)
 	
 	if abs(angle_to_player) > vision_cone_angle / 2.0:
 		return false
 	
 	if not see_through_walls and detection_ray:
-		detection_ray.target_position = to_local(player_pos)
+		detection_ray.target_position = detection_ray.to_local(player_pos)
 		detection_ray.force_raycast_update()
 		if detection_ray.is_colliding():
 			var collider = detection_ray.get_collider()
@@ -138,7 +151,7 @@ func _is_player_in_vision() -> bool:
 	return true
 
 
-## --- EFECTOS VISUALES ---
+
 func _update_visuals() -> void:
 	if not light:
 		return
@@ -158,9 +171,7 @@ func _update_visuals() -> void:
 ## --- ALERTA ---
 func _trigger_alert() -> void:
 	state = CameraState.ALERT
-	print("🚨 ¡CÁMARA '", name, "' DETECTÓ AL JUGADOR!")
 
-	# Cambia color y brillo de la luz inmediatamente 🔴
 	if light:
 		light.color = alert_color
 		light.energy = 2.0
@@ -171,10 +182,8 @@ func _trigger_alert() -> void:
 	if player_in_range:
 		player_detected.emit(player_in_range)
 	
-	# 🚨 Detiene rotación y alerta guardias
 	_alert_nearby_guards()
 	
-	# Esperar unos segundos y volver al modo patrulla
 	await get_tree().create_timer(4.0).timeout
 	if is_instance_valid(self):
 		state = CameraState.IDLE
@@ -182,35 +191,29 @@ func _trigger_alert() -> void:
 
 
 
-## --- ALERTAR GUARDIAS CERCANOS ---
 func _alert_nearby_guards() -> void:
 	var guards = get_tree().get_nodes_in_group("guard_enemy")
+	var target_pos = global_position
+	if player_in_range:
+		target_pos = player_in_range.global_position
 	for guard in guards:
 		if not is_instance_valid(guard):
 			continue
 		var distance = guard.global_position.distance_to(global_position)
 		if distance <= guard_alert_range:
-			# Si el guardia tiene un método de movimiento hacia una posición de alerta:
-			if guard.has_method("go_to_alert_position"):
-				guard.go_to_alert_position(global_position)
-				print("⚠️ Guardia alertado:", guard.name, " y dirigiéndose a la cámara")
-			else:
-				# Si no tiene ese método, muévelo directamente (opcional)
-				if guard.has_variable("state"):
-					guard.state = guard.State.ALERTED
-				if guard.has_variable("guard_movement"):
-					guard.guard_movement.set_destination(global_position)
+			
+			if "last_seen_position" in guard:
+				guard.last_seen_position = target_pos
+			
+			if "state" in guard:
+				guard.state = 3
 
 
 
-## --- DETECCIÓN DEL ÁREA ---
 func _on_vision_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = body
-		print("👁️ Jugador entró en rango de cámara '", name, "'")
-
 
 func _on_vision_area_body_exited(body: Node2D) -> void:
 	if body == player_in_range:
 		player_in_range = null
-		print("🌑 Jugador salió del rango de cámara '", name, "'")

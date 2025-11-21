@@ -377,6 +377,7 @@ scale = Vector2(1.4, 1.4)
 sprite_frames = ExtResource("1_ropwr")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.44260553
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TileMapLayer/OnTheGround"]
 root_node = NodePath("../../..")

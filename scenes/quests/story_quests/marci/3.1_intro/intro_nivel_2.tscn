@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://m7hahs7ucupi"]
+[gd_scene load_steps=7 format=3 uid="uid://m7hahs7ucupi"]
 
+[ext_resource type="Script" uid="uid://cm2rmlsxf6xy7" path="res://scenes/quests/story_quests/marci/3.1_intro/intro_nivel_2.gd" id="1_0l5wy"]
 [ext_resource type="VideoStream" uid="uid://bvgjub8dkqaek" path="res://scenes/quests/story_quests/marci/3.1_intro/components/End minijuego 1.ogv" id="1_ynl6m"]
 [ext_resource type="Script" uid="uid://xv2dli2js6l3" path="res://scenes/quests/story_quests/marci/3.1_intro/components/video.gd" id="2_k1ke0"]
 
@@ -46,11 +47,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0l5wy")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 stream = ExtResource("1_ynl6m")
 expand = true
 

@@ -2,14 +2,18 @@ extends Node2D
 
 @onready var player := $Player
 @onready var hp_label = $CanvasLayer/LabelHP
-@onready var collectible_item = $CollectibleItem # Referencia al ítem
+@onready var collectible_item = $CollectibleItem
+@onready var boss_health_bar = $CanvasLayer/BossHealthBar
+@onready var boss = $FireBoss
 
-# Variable para guardar dónde debe aterrizar el ítem
 var item_landing_position: Vector2
 
 func _ready():
 	add_to_group("main")
 	update_hud()
+	if boss and boss_health_bar:
+		boss_health_bar.max_value = boss.max_health
+		boss_health_bar.value = boss.health
 	if collectible_item:
 		item_landing_position = collectible_item.position
 		collectible_item.position.y -= 350
@@ -43,3 +47,7 @@ func game_over():
 	await get_tree().create_timer(1.5).timeout
 	
 	get_tree().call_deferred("reload_current_scene")
+
+func update_boss_health(current_health):
+	if boss_health_bar:
+		boss_health_bar.value = current_health

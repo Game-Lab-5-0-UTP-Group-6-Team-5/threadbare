@@ -331,7 +331,7 @@ editor_draw_limits = true
 [node name="EnemyGuards" type="Node2D" parent="."]
 
 [node name="SecurityCamera" parent="EnemyGuards" instance=ExtResource("10_wwglu")]
-position = Vector2(1132, 150)
+position = Vector2(1061, 78)
 
 [node name="SecurityCamera2" parent="EnemyGuards" instance=ExtResource("10_wwglu")]
 position = Vector2(1884, 598)

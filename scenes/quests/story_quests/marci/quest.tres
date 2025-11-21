@@ -9,5 +9,5 @@ title = "Marci"
 description = "La historia que queremos narrar cuenta el escape de nuestra protagonista llamada Marci de la carcel en la que se le ajustició siendo inocente. "
 first_scene = "uid://ch5de820tngri"
 sprite_frames = ExtResource("2_wfigc")
-animation_name = &"defeated"
+animation_name = &"idle_book"
 metadata/_custom_type_script = "uid://dts1hwdy3phin"

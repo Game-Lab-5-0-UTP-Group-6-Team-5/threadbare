@@ -84,8 +84,10 @@ func _shoot():
 
 func take_damage(amount):
 	health -= amount
+	var main = get_tree().get_first_node_in_group("main")
+	if main and main.has_method("update_boss_health"):
+		main.update_boss_health(health)
 	if health <= 0:
-		var main = get_tree().get_first_node_in_group("main")
 		if main and main.has_method("boss_defeated"):
 			main.boss_defeated()	
 		queue_free()
